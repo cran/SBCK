@@ -61,15 +61,15 @@ of next}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{MBCn$new()}}
-\item \href{#method-fit}{\code{MBCn$fit()}}
-\item \href{#method-predict}{\code{MBCn$predict()}}
-\item \href{#method-clone}{\code{MBCn$clone()}}
+\item \href{#method-MBCn-new}{\code{MBCn$new()}}
+\item \href{#method-MBCn-fit}{\code{MBCn$fit()}}
+\item \href{#method-MBCn-predict}{\code{MBCn$predict()}}
+\item \href{#method-MBCn-clone}{\code{MBCn$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-MBCn-new"></a>}}
+\if{latex}{\out{\hypertarget{method-MBCn-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new MBCn object.
 \subsection{Usage}{
@@ -104,8 +104,8 @@ A new `MBCn` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-MBCn-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-MBCn-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the bias correction method
 \subsection{Usage}{
@@ -128,8 +128,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-MBCn-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-MBCn-predict}{}}}
 \subsection{Method \code{predict()}}{
 Predict the correction
 \subsection{Usage}{
@@ -152,8 +152,8 @@ Predict the correction
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-MBCn-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-MBCn-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

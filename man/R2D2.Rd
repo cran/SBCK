@@ -45,21 +45,15 @@ Vrac, M.: Multivariate bias adjustment of high-dimensional
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{R2D2$new()}}
-\item \href{#method-fit}{\code{R2D2$fit()}}
-\item \href{#method-predict}{\code{R2D2$predict()}}
-\item \href{#method-clone}{\code{R2D2$clone()}}
+\item \href{#method-R2D2-new}{\code{R2D2$new()}}
+\item \href{#method-R2D2-fit}{\code{R2D2$fit()}}
+\item \href{#method-R2D2-predict}{\code{R2D2$predict()}}
+\item \href{#method-R2D2-clone}{\code{R2D2$clone()}}
 }
-}
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-}
-\out{</details>}
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-R2D2-new"></a>}}
+\if{latex}{\out{\hypertarget{method-R2D2-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new R2D2 object.
 \subsection{Usage}{
@@ -81,8 +75,8 @@ A new `R2D2` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-R2D2-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-R2D2-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the bias correction method
 \subsection{Usage}{
@@ -105,8 +99,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-R2D2-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-R2D2-predict}{}}}
 \subsection{Method \code{predict()}}{
 Predict the correction
 \subsection{Usage}{
@@ -129,8 +123,8 @@ Predict the correction
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-R2D2-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-R2D2-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

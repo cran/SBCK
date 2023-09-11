@@ -68,15 +68,15 @@ margins. Default is ROOPSD::rv_histogram.}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{QM$new()}}
-\item \href{#method-fit}{\code{QM$fit()}}
-\item \href{#method-predict}{\code{QM$predict()}}
-\item \href{#method-clone}{\code{QM$clone()}}
+\item \href{#method-QM-new}{\code{QM$new()}}
+\item \href{#method-QM-fit}{\code{QM$fit()}}
+\item \href{#method-QM-predict}{\code{QM$predict()}}
+\item \href{#method-QM-clone}{\code{QM$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-QM-new"></a>}}
+\if{latex}{\out{\hypertarget{method-QM-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new QM object.
 \subsection{Usage}{
@@ -101,8 +101,8 @@ A new `QM` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-QM-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-QM-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the bias correction method
 \subsection{Usage}{
@@ -123,8 +123,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-QM-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-QM-predict}{}}}
 \subsection{Method \code{predict()}}{
 Predict the correction
 \subsection{Usage}{
@@ -143,8 +143,8 @@ Predict the correction
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-QM-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-QM-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

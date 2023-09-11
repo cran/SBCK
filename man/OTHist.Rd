@@ -37,13 +37,13 @@ cell. If NULL, c(0,...,0) is used}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{OTHist$new()}}
-\item \href{#method-clone}{\code{OTHist$clone()}}
+\item \href{#method-OTHist-new}{\code{OTHist$new()}}
+\item \href{#method-OTHist-clone}{\code{OTHist$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-OTHist-new"></a>}}
+\if{latex}{\out{\hypertarget{method-OTHist-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new OTHist object.
 \subsection{Usage}{
@@ -64,8 +64,8 @@ A new `OTHist` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-OTHist-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-OTHist-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

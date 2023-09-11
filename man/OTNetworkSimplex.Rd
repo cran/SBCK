@@ -4,7 +4,7 @@
 \alias{OTNetworkSimplex}
 \title{Optimal Transport Network Simplex solver}
 \description{
-Solve the optimal transport problem
+Solve the optimal transport problem with the package 'transport'
 }
 \details{
 use the network simplex algorithm
@@ -46,14 +46,14 @@ Bazaraa, M. S., Jarvis, J. J., and Sherali, H. D.: Linear
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{OTNetworkSimplex$new()}}
-\item \href{#method-fit}{\code{OTNetworkSimplex$fit()}}
-\item \href{#method-clone}{\code{OTNetworkSimplex$clone()}}
+\item \href{#method-OTNetworkSimplex-new}{\code{OTNetworkSimplex$new()}}
+\item \href{#method-OTNetworkSimplex-fit}{\code{OTNetworkSimplex$fit()}}
+\item \href{#method-OTNetworkSimplex-clone}{\code{OTNetworkSimplex$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-OTNetworkSimplex-new"></a>}}
+\if{latex}{\out{\hypertarget{method-OTNetworkSimplex-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new OTNetworkSimplex object.
 \subsection{Usage}{
@@ -72,8 +72,8 @@ A new `OTNetworkSimplex` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-OTNetworkSimplex-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-OTNetworkSimplex-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the OT plan
 \subsection{Usage}{
@@ -97,8 +97,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-OTNetworkSimplex-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-OTNetworkSimplex-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

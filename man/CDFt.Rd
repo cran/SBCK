@@ -61,15 +61,15 @@ margins. Default is ROOPSD::rv_histogram.}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{CDFt$new()}}
-\item \href{#method-fit}{\code{CDFt$fit()}}
-\item \href{#method-predict}{\code{CDFt$predict()}}
-\item \href{#method-clone}{\code{CDFt$clone()}}
+\item \href{#method-CDFt-new}{\code{CDFt$new()}}
+\item \href{#method-CDFt-fit}{\code{CDFt$fit()}}
+\item \href{#method-CDFt-predict}{\code{CDFt$predict()}}
+\item \href{#method-CDFt-clone}{\code{CDFt$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-CDFt-new"></a>}}
+\if{latex}{\out{\hypertarget{method-CDFt-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new CDFt object.
 \subsection{Usage}{
@@ -79,12 +79,24 @@ Create a new CDFt object.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{...}}{Optional arguments are distX0, distX1 (models in calibration
-and projection period), distY0, distY1 (observations
-in calibration and projection period), and kwargsX0,
-...,kwargsY1 the arguments of each respective
-distribution. The type of dist* are ROOPSD distribution,
-whereas kwargs* are list.}
+\item{\code{...}}{Optional arguments are:
+- distX0, distX1, models in calibration and projection period, see ROOPSD
+- distY0, distY1, observations in calibration and projection period, see ROOPSD
+- kwargsX0, kwargsX1, list of arguments for each respective distribution
+- kwargsY0, kwargsY1, list of arguments for each respective distribution
+- scale_left_tail [float]  Scale applied on the left support
+  (min to median) between calibration and projection period. If
+  NULL (default), it is determined during the fit. If == 1,
+  equivalent to the original algorithm of CDFt.
+- scale_right_tail [float]  Scale applied on the right support
+  (median to max) between calibration and projection period. If
+  NULL (default), it is determined during the fit. If == 1,
+  equivalent to the original algorithm of CDFt.
+- normalize_cdf [bool or vector of bool] If a normalization
+  is applied to the data to maximize the overlap of the
+  support. Can be a bool (True or False, applied for all
+  colums), or a list of bool of size 'n_features' to
+  distinguished each columns.}
 }
 \if{html}{\out{</div>}}
 }
@@ -93,8 +105,8 @@ A new `CDFt` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-CDFt-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-CDFt-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the bias correction method
 \subsection{Usage}{
@@ -117,8 +129,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-CDFt-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-CDFt-predict}{}}}
 \subsection{Method \code{predict()}}{
 Predict the correction
 \subsection{Usage}{
@@ -141,8 +153,8 @@ Predict the correction
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-CDFt-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-CDFt-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

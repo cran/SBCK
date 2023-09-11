@@ -38,21 +38,15 @@ Vrac, M. and P. Friederichs, 2015: Multivariate—Intervariable,
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{ECBC$new()}}
-\item \href{#method-fit}{\code{ECBC$fit()}}
-\item \href{#method-predict}{\code{ECBC$predict()}}
-\item \href{#method-clone}{\code{ECBC$clone()}}
+\item \href{#method-ECBC-new}{\code{ECBC$new()}}
+\item \href{#method-ECBC-fit}{\code{ECBC$fit()}}
+\item \href{#method-ECBC-predict}{\code{ECBC$predict()}}
+\item \href{#method-ECBC-clone}{\code{ECBC$clone()}}
 }
-}
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-}
-\out{</details>}
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-ECBC-new"></a>}}
+\if{latex}{\out{\hypertarget{method-ECBC-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new ECBC object.
 \subsection{Usage}{
@@ -71,8 +65,8 @@ A new `ECBC` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-ECBC-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-ECBC-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the bias correction method
 \subsection{Usage}{
@@ -95,8 +89,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-ECBC-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-ECBC-predict}{}}}
 \subsection{Method \code{predict()}}{
 Predict the correction
 \subsection{Usage}{
@@ -119,8 +113,8 @@ Predict the correction
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-ECBC-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-ECBC-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

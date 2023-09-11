@@ -1,5 +1,5 @@
 
-## Copyright(c) 2021 Yoann Robin
+## Copyright(c) 2021 / 2023 Yoann Robin
 ## 
 ## This file is part of SBCK.
 ## 
@@ -80,7 +80,7 @@ CDFt = R6::R6Class( "CDFt" ,
 	#' @field n_features [integer] Number of features
 	n_features = 0,
 	#' @field tol [double] Floatting point tolerance
-	tol        = 1e-3,
+	tol        = 1e-6,
 	
 	#' @field distY0 [ROOPSD distribution or a list of them] Describe the law of
 	#'        each margins. A list permit to use different laws for each
@@ -107,12 +107,24 @@ CDFt = R6::R6Class( "CDFt" ,
 	## initialize ##{{{
 	#' @description
     #' Create a new CDFt object.
-	#' @param ... Optional arguments are distX0, distX1 (models in calibration
-	#'            and projection period), distY0, distY1 (observations
-	#'            in calibration and projection period), and kwargsX0,
-	#'            ...,kwargsY1 the arguments of each respective
-	#'            distribution. The type of dist* are ROOPSD distribution,
-	#'            whereas kwargs* are list.
+	#' @param ... Optional arguments are:
+	#'            - distX0, distX1, models in calibration and projection period, see ROOPSD
+	#'            - distY0, distY1, observations in calibration and projection period, see ROOPSD
+	#'            - kwargsX0, kwargsX1, list of arguments for each respective distribution
+	#'            - kwargsY0, kwargsY1, list of arguments for each respective distribution
+	#'            - scale_left_tail [float]  Scale applied on the left support
+	#'              (min to median) between calibration and projection period. If
+	#'              NULL (default), it is determined during the fit. If == 1,
+	#'              equivalent to the original algorithm of CDFt.
+	#'            - scale_right_tail [float]  Scale applied on the right support
+	#'              (median to max) between calibration and projection period. If
+	#'              NULL (default), it is determined during the fit. If == 1,
+	#'              equivalent to the original algorithm of CDFt.
+	#'            - normalize_cdf [bool or vector of bool] If a normalization
+	#'              is applied to the data to maximize the overlap of the
+	#'              support. Can be a bool (True or False, applied for all
+	#'              colums), or a list of bool of size 'n_features' to
+	#'              distinguished each columns.
 	#' @return A new `CDFt` object.
 	initialize = function(...) 
 	{
@@ -122,7 +134,13 @@ CDFt = R6::R6Class( "CDFt" ,
 		self$distX0 = DistHelper$new( dist = kwargs[["distX0"]] , kwargs = kwargs[["kwargsX0"]] )
 		self$distX1 = DistHelper$new( dist = kwargs[["distX1"]] , kwargs = kwargs[["kwargsX1"]] )
 		self$n_features = kwargs[["n_features"]]
-		self$tol        = if( !is.null(kwargs[["tol"]]) ) kwargs[["tol"]] else 1e-3
+		self$tol        = if( !is.null(kwargs[["tol"]]) )   kwargs[["tol"]] else 1e-6
+		private$dsupp   = if( !is.null(kwargs[["dsupp"]]) ) kwargs[["dsupp"]] else 1000
+		private$scale_left_tail  = if( !is.null(kwargs[["scale_left_tail"]]) )  kwargs[["scale_left_tail"]]  else NA
+		private$scale_right_tail = if( !is.null(kwargs[["scale_right_tail"]]) ) kwargs[["scale_right_tail"]] else NA
+		private$normalize_cdf    = if( !is.null(kwargs[["scale_right_tail"]]) ) kwargs[["scale_right_tail"]] else TRUE
+		if( !( class(private$normalize_cdf) %in% list("logical","numeric") ) )
+			private$normalize_cdf = FALSE
 	},
 	##}}}
 	
@@ -159,6 +177,10 @@ CDFt = R6::R6Class( "CDFt" ,
 		self$distX0$set_features(self$n_features)
 		self$distX1$set_features(self$n_features)
 		
+		## Set normalizations
+		##===================
+		if( is(private$normalize_cdf,"logical") )
+			private$normalize_cdf = numeric(self$n_features) + private$normalize_cdf
 		
 		## Start fit itself
 		##=================
@@ -254,80 +276,236 @@ CDFt = R6::R6Class( "CDFt" ,
 	
 	qmX1Y1 = list(),
 	qmX0Y0 = NULL,
-	diff = NULL,
-	
+	diff   = NULL,
+	dsupp  = 1000,
+	scale_left_tail  = NA,
+	scale_right_tail = NA,
+	normalize_cdf    = TRUE,
 	
 	#############
 	## Methods ##
 	#############
 	
-	infer_Y1 = function( Y0 , X0 , X1 , idx )##{{{
+	infer_Y1 = function( Y0 , X0 , X1 , idist )##{{{
 	{
-		mY0 = base::mean(Y0)
-		mX0 = base::mean(X0)
+		dsupp      = private$dsupp
+		tol        = self$tol
+		samples_Y1 = 10000
+		scale_left_tail  = private$scale_left_tail 
+		scale_right_tail = private$scale_right_tail
 		
-		X0s = X0 + mY0 - mX0
-		X1s = X1 + mY0 - mX0
 		
-		rvY0 = self$distY0$law[[idx]]
-		rvX0 = base::do.call( self$distX0$dist[[idx]]$new , self$distX0$kwargs )
-		rvX0$fit(X0s)
-		rvX1 = base::do.call( self$distX1$dist[[idx]]$new , self$distX1$kwargs )
-		rvX1$fit(X1s)
-		
-		xdiff = base::abs( base::mean(X1) - base::mean(X0) )
-		xdev = 2
-		dev_ok = FALSE
-		
-		while( !dev_ok )
+		## Normalization
+		if( private$normalize_cdf[idist] )
 		{
-			dev_ok = TRUE
-			xmin = base::min(Y0,X0,X1) - xdev * xdiff
-			xmax = base::max(Y0,X0,X1) + xdev * xdiff
+			mY0 = base::mean(Y0)
+			mX0 = base::mean(X0)
+			mX1 = base::mean(X1)
+			sY0 = stats::sd(Y0)
+			sX0 = stats::sd(X0)
 			
-			x = base::seq( xmin , xmax , length = 200 )
-			cdfY0 = rvY0$cdf(x)
-			cdfX0 = rvX0$cdf(x)
-			cdfX1 = rvX1$cdf(x)
-			cdfY1 = rvY0$cdf(rvX0$icdf(cdfX1))
-			
-			if( base::min(Y0) < base::min(X1s) )
-			{
-				i = base::max( base::which( x < rvY0$icdf(cdfY1[1]) ) )
-				j = base::max( base::which( x < base::min(X1s) ) )
-				if( i < j )
-				{
-					cdfY1[(j-i+1):j] = cdfY0[1:i]
-					cdfY1[1:(j-i+1)] = 0.
-				}
-				else
-				{
-					cdfY1[1:j] = cdfY0[(i-j+1):i]
-				}
-			}
-			
-			if( cdfY1[base::length(cdfY1)] < 1 )
-			{
-				i = base::max( base::which( x < rvY0$icdf(cdfY1[length(cdfY1)]) ) )
-				j = base::min( base::which( cdfY1[1:(length(cdfY1)-1)] == cdfY1[length(cdfY1)] ) )
-				if( j > 0 )
-				{
-					dif = min( length(x) - j , length(x) - i )
-					cdfY1[j:(j+dif)] = cdfY0[i:(i+dif)]
-					if( j + dif < length(x) ) cdfY1[(j+dif):length(cdfY1)] = 1.
-				}
-				else
-				{
-					dev_ok = FALSE
-					xdev = 2 * xdev
-				}
-			}
+			X0s = (X0 - mX0) * sY0 / sX0 + mY0
+			X1s = (X1 - mX1) * sY0 / sX0 + mX1 + mY0 - mX0
 		}
 		
-		cdfY1_fct = approxfun( cdfY1 , x )
-		Y1 = cdfY1_fct( stats::runif( n = 10000 , min = base::min(cdfY1) , max = base::max(cdfY1) ) )
+		## CDF
+		rvY0  = self$distY0$law[[idist]]
+		rvX0s = base::do.call( self$distX0$dist[[idist]]$new , self$distX0$kwargs )
+		rvX0s$fit(X0s)
+		rvX1s = base::do.call( self$distX1$dist[[idist]]$new , self$distX1$kwargs )
+		rvX1s$fit(X1s)
 		
-		return(Y1)
+		## Support
+		## Here the support is such that the CDF of Y0, X0s and X1s start from 0
+		## and go to 1
+		x_min = base::min(Y0,X0s,X1s,X0,X1)
+		x_max = base::max(Y0,X0s,X1s,X0,X1)
+		x_eps = 0.05 * (x_max - x_min)
+		x_fac = 1
+		x = base::seq( x_min - x_fac * x_eps , x_max + x_fac * x_eps , length = dsupp )
+		
+		support_test = function( rv , x )
+		{
+			if( !base::abs(rv$cdf(x[1])) < tol )
+				return(FALSE)
+			if( !base::abs(rv$cdf(x[length(x)])-1) < tol )
+				return(FALSE)
+			return(TRUE)
+		}
+		
+		while( !support_test(rvY0,x) || !support_test(rvX0s,x) || !support_test(rvX1s,x) )
+		{
+			x_fac = 2 * x_fac
+			x = base::seq( x_min - x_fac * x_eps , x_max + x_fac * x_eps , length = dsupp )
+		}
+		x_fac = x_fac / 2
+		
+		## Loop to check the support
+		p_min = 0
+		p_max = 1
+		extend_support = TRUE
+		while( extend_support )
+		{
+			extend_support = FALSE
+			
+			## Inference of the CDF of Y1
+			cdfY1 = rvY0$cdf(rvX0s$icdf(rvX1s$cdf(x)))
+			
+			## Correction of the CDF, we want that the CDF of Y1 start from 0 and goto 1
+			if( cdfY1[1] > p_min )
+			{
+				## CDF not start at p_min
+				idx  = base::max(which(base::abs(cdfY1[1] - cdfY1) < tol))
+				if( idx == 1 )
+				{
+					extend_support = TRUE
+				}
+				else
+				{
+					if( is.na(scale_left_tail) )
+					{
+						supp_l_X0s = rvX0s$icdf(cdfY1[1]) - rvX0s$icdf(p_min)
+						supp_l_X1s = rvX1s$icdf(cdfY1[1]) - rvX1s$icdf(p_min)
+						scale_left_tail = supp_l_X1s / supp_l_X0s
+					}
+					supp_l_Y0  = rvY0$icdf(cdfY1[1])  - rvY0$icdf(p_min)
+					supp_l_Y1  = supp_l_Y0 * scale_left_tail
+					if( x[idx] - supp_l_Y1 < x[1] )
+					{
+						extend_support = TRUE
+					}
+					else
+					{
+						idxl = base::which.min(base::abs(x - (x[idx] - supp_l_Y1)))
+						cdfY1[1:(idxl-1)] = 0
+						cdfY1[idxl:idx] = rvY0$cdf( base::seq( rvY0$icdf(p_min) , rvY0$icdf(cdfY1[idx]) , length = idx - idxl + 1 ) )
+					}
+				}
+			}
+			
+			size = length(cdfY1)
+			if( cdfY1[size] < p_max )
+			{
+				## CDF not finished at p_max
+				idx = base::min(which(base::abs(cdfY1[size] - cdfY1) < tol))
+				if( idx == dsupp )
+				{
+					extend_support = TRUE
+				}
+				else
+				{
+					if( is.na(scale_right_tail) )
+					{
+						supp_r_X0s = rvX0s$icdf(p_max) - rvX0s$icdf(cdfY1[size]) 
+						supp_r_X1s = rvX1s$icdf(p_max) - rvX1s$icdf(cdfY1[size])
+						scale_right_tail = supp_r_X1s / supp_r_X0s
+					}
+					supp_r_Y0  = rvY0$icdf(p_max)  - rvY0$icdf(cdfY1[size])  
+					supp_r_Y1  = supp_r_Y0 * scale_right_tail
+					if( x[idx] + supp_r_Y1 > x[size] )
+					{
+						extend_support = TRUE
+					}
+					else
+					{
+						idxr = which.min(base::abs(x - (x[idx] + supp_r_Y1)))
+						cdfY1[(idxr+1):size] = 1
+						cdfY1[idx:idxr] = rvY0$cdf( base::seq( rvY0$icdf(cdfY1[idx]) , rvY0$icdf(p_max) , length = idxr - idx + 1 ) )
+					}
+				}
+			}
+			## Support
+			if(extend_support)
+			{
+				dsupp = as.integer(dsupp*1.2)
+				x_fac = 2*x_fac
+				x = base::seq( x_min - x_fac * x_eps , x_max + x_fac * x_eps , length = dsupp )
+			}
+			
+		}
+		## Cut the support to remove identical values
+		if( base::sum( base::abs(cdfY1 - cdfY1[1]) < tol ) > 1 )
+		{
+			idxl  = base::max( which( base::abs(cdfY1 - cdfY1[1]) < tol ) )
+			x     = x[idxl:length(x)]
+			cdfY1 = cdfY1[idxl:length(cdfY1)]
+		}
+		if( base::sum( base::abs(cdfY1 - cdfY1[length(cdfY1)]) < tol ) > 1 )
+		{
+			idxr  = base::min( which( base::abs(cdfY1 - cdfY1[length(cdfY1)]) < tol ) )
+			x     = x[1:idxr]
+			cdfY1 = cdfY1[1:idxr]
+		}
+		
+		## Build inverse of CDF
+		icdfY1 = stats::approxfun( cdfY1 , x , yleft = x[1] , yright = x[length(x)] , ties = "ordered" )
+		
+		## Now find p_min / p_max to have coherent tail
+		lsuppl_Y0  = median(Y0) - min(Y0)
+		lsuppl_X0  = median(X0) - min(X0)
+		lsuppl_X1  = median(X1) - min(X1)
+		lsuppl_Y1  = lsuppl_Y0 * lsuppl_X1 / lsuppl_X0
+		lsuppl_pY1 = icdfY1(0.5) - icdfY1(0)
+		lsuppr_Y0  = max(Y0) - median(Y0)
+		lsuppr_X0  = max(X0) - median(X0)
+		lsuppr_X1  = max(X1) - median(X1)
+		lsuppr_Y1  = lsuppr_Y0 * lsuppr_X1 / lsuppr_X0
+		lsuppr_pY1 = icdfY1(1) - icdfY1(0.5)
+		
+		if( (lsuppl_pY1 > lsuppl_Y1) || (lsuppr_pY1 > lsuppr_Y1) )
+		{
+			## Find p_min
+			p_min = 0
+			if( lsuppl_pY1 > lsuppl_Y1 )
+			{
+				pl  = base::seq( 0 , 0.5 , length = 10000 )
+				ql  = icdfY1(pl)
+				ql  = ql[10000] - ql
+				idxl = which.min( base::abs( ql - lsuppr_Y1 ) )
+				p_min = pl[idxl]
+			}
+			
+			## Find p_max
+			p_max = 1
+			if( lsuppr_pY1 > lsuppr_Y1 )
+			{
+				pr  = base::seq( 0.5 , 1 , length = 10000 )
+				qr  = icdfY1(pr)
+				qr  = qr - qr[1]
+				idxr = which.min( base::abs( qr - lsuppr_Y1 ) )
+				p_max = pr[idxr]
+			}
+			
+			## Final: Replace by 0 / 1 bellow / behind p_min / 1-p_min
+			if( base::sum(cdfY1 < p_min) > 0 )
+				cdfY1[cdfY1 < p_min] = 0
+			if( base::sum(cdfY1 > p_max) > 0 )
+				cdfY1[cdfY1 > p_max] = 1
+			
+			## Cut values and new icdf
+			if( base::sum( cdfY1 < p_min ) > 1 )
+			{
+				idxl  = base::max( which( cdfY1 < p_min ) )
+				x     = x[idxl:length(x)]
+				cdfY1 = cdfY1[idxl:length(cdfY1)]
+			}
+			if( base::sum( cdfY1 > p_max ) > 1 )
+			{
+				idxr  = base::min( which( cdfY1 > p_max ) )
+				x     = x[1:idxr]
+				cdfY1 = cdfY1[1:idxr]
+			}
+			icdfY1 = stats::approxfun( cdfY1 , x , yleft = x[1] , yright = x[length(x)] , ties = "ordered" )
+		}
+		
+		
+		## Draw Y1
+#		hY1  = icdfY1( runif( n = samples_Y1 , min = p_min , max = p_max ) )
+		rvX1 = base::do.call( self$distX1$dist[[idist]]$new , self$distX1$kwargs )
+		rvX1$fit(X1)
+		hY1  = icdfY1( rvX1$cdf(X1) )
+		
+		return(hY1)
 	}
 	##}}}
 	

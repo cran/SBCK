@@ -30,21 +30,15 @@ Z0 = ss$predict(X0)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{SchaakeShuffleRef$new()}}
-\item \href{#method-fit}{\code{SchaakeShuffleRef$fit()}}
-\item \href{#method-predict}{\code{SchaakeShuffleRef$predict()}}
-\item \href{#method-clone}{\code{SchaakeShuffleRef$clone()}}
+\item \href{#method-SchaakeShuffleRef-new}{\code{SchaakeShuffleRef$new()}}
+\item \href{#method-SchaakeShuffleRef-fit}{\code{SchaakeShuffleRef$fit()}}
+\item \href{#method-SchaakeShuffleRef-predict}{\code{SchaakeShuffleRef$predict()}}
+\item \href{#method-SchaakeShuffleRef-clone}{\code{SchaakeShuffleRef$clone()}}
 }
-}
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-}
-\out{</details>}
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-SchaakeShuffleRef-new"></a>}}
+\if{latex}{\out{\hypertarget{method-SchaakeShuffleRef-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new ShaakeShuffleRef object.
 \subsection{Usage}{
@@ -65,8 +59,8 @@ A new `ShaaleShuffleRef` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-SchaakeShuffleRef-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-SchaakeShuffleRef-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the model
 \subsection{Usage}{
@@ -85,8 +79,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-SchaakeShuffleRef-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-SchaakeShuffleRef-predict}{}}}
 \subsection{Method \code{predict()}}{
 Fit the model
 \subsection{Usage}{
@@ -105,8 +99,8 @@ Z0 [vector] data shuffled
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-SchaakeShuffleRef-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-SchaakeShuffleRef-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

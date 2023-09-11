@@ -26,17 +26,17 @@ Used to parallel work for margins
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{DistHelper$new()}}
-\item \href{#method-set_features}{\code{DistHelper$set_features()}}
-\item \href{#method-fit}{\code{DistHelper$fit()}}
-\item \href{#method-is_frozen}{\code{DistHelper$is_frozen()}}
-\item \href{#method-is_parametric}{\code{DistHelper$is_parametric()}}
-\item \href{#method-clone}{\code{DistHelper$clone()}}
+\item \href{#method-DistHelper-new}{\code{DistHelper$new()}}
+\item \href{#method-DistHelper-set_features}{\code{DistHelper$set_features()}}
+\item \href{#method-DistHelper-fit}{\code{DistHelper$fit()}}
+\item \href{#method-DistHelper-is_frozen}{\code{DistHelper$is_frozen()}}
+\item \href{#method-DistHelper-is_parametric}{\code{DistHelper$is_parametric()}}
+\item \href{#method-DistHelper-clone}{\code{DistHelper$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-DistHelper-new"></a>}}
+\if{latex}{\out{\hypertarget{method-DistHelper-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new DistHelper object.
 \subsection{Usage}{
@@ -57,8 +57,8 @@ A new `DistHelper` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-set_features"></a>}}
-\if{latex}{\out{\hypertarget{method-set_features}{}}}
+\if{html}{\out{<a id="method-DistHelper-set_features"></a>}}
+\if{latex}{\out{\hypertarget{method-DistHelper-set_features}{}}}
 \subsection{Method \code{set_features()}}{
 set the number of features
 \subsection{Usage}{
@@ -77,8 +77,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-DistHelper-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-DistHelper-fit}{}}}
 \subsection{Method \code{fit()}}{
 fit the laws
 \subsection{Usage}{
@@ -99,8 +99,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-is_frozen"></a>}}
-\if{latex}{\out{\hypertarget{method-is_frozen}{}}}
+\if{html}{\out{<a id="method-DistHelper-is_frozen"></a>}}
+\if{latex}{\out{\hypertarget{method-DistHelper-is_frozen}{}}}
 \subsection{Method \code{is_frozen()}}{
 Test if margins i is frozen
 \subsection{Usage}{
@@ -119,8 +119,8 @@ Test if margins i is frozen
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-is_parametric"></a>}}
-\if{latex}{\out{\hypertarget{method-is_parametric}{}}}
+\if{html}{\out{<a id="method-DistHelper-is_parametric"></a>}}
+\if{latex}{\out{\hypertarget{method-DistHelper-is_parametric}{}}}
 \subsection{Method \code{is_parametric()}}{
 Test if margins i is parametric
 \subsection{Usage}{
@@ -139,8 +139,8 @@ Test if margins i is parametric
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-DistHelper-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-DistHelper-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -6,19 +6,11 @@
 
 using namespace Rcpp;
 
-// network_simplex
-Rcpp::List network_simplex(Rcpp::NumericVector X, Rcpp::NumericVector Y, Rcpp::NumericMatrix D);
-RcppExport SEXP _SBCK_network_simplex(SEXP XSEXP, SEXP YSEXP, SEXP DSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type X(XSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type Y(YSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type D(DSEXP);
-    rcpp_result_gen = Rcpp::wrap(network_simplex(X, Y, D));
-    return rcpp_result_gen;
-END_RCPP
-}
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // cpp_pairwise_distances_XYstr
 Rcpp::NumericMatrix cpp_pairwise_distances_XYstr(Rcpp::NumericMatrix X, Rcpp::NumericMatrix Y, std::string str_metric);
 RcppExport SEXP _SBCK_cpp_pairwise_distances_XYstr(SEXP XSEXP, SEXP YSEXP, SEXP str_metricSEXP) {
@@ -73,7 +65,6 @@ END_RCPP
 RcppExport SEXP _rcpp_module_boot_SBCK_cpp();
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_SBCK_network_simplex", (DL_FUNC) &_SBCK_network_simplex, 3},
     {"_SBCK_cpp_pairwise_distances_XYstr", (DL_FUNC) &_SBCK_cpp_pairwise_distances_XYstr, 3},
     {"_SBCK_cpp_pairwise_distances_Xstr", (DL_FUNC) &_SBCK_cpp_pairwise_distances_Xstr, 2},
     {"_SBCK_cpp_pairwise_distances_XYCall", (DL_FUNC) &_SBCK_cpp_pairwise_distances_XYCall, 3},

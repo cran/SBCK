@@ -44,15 +44,15 @@ Bárdossy, A. and Pegram, G.: Multiscale spatial recorrelation of
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{MRec$new()}}
-\item \href{#method-fit}{\code{MRec$fit()}}
-\item \href{#method-predict}{\code{MRec$predict()}}
-\item \href{#method-clone}{\code{MRec$clone()}}
+\item \href{#method-MRec-new}{\code{MRec$new()}}
+\item \href{#method-MRec-fit}{\code{MRec$fit()}}
+\item \href{#method-MRec-predict}{\code{MRec$predict()}}
+\item \href{#method-MRec-clone}{\code{MRec$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-MRec-new"></a>}}
+\if{latex}{\out{\hypertarget{method-MRec-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new MRec object.
 \subsection{Usage}{
@@ -77,8 +77,8 @@ A new `MRec` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-MRec-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-MRec-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the bias correction method
 \subsection{Usage}{
@@ -101,8 +101,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-MRec-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-MRec-predict}{}}}
 \subsection{Method \code{predict()}}{
 Predict the correction
 \subsection{Usage}{
@@ -125,8 +125,8 @@ Predict the correction
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-MRec-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-MRec-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

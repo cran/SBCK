@@ -61,15 +61,15 @@ simplex}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{OTC$new()}}
-\item \href{#method-fit}{\code{OTC$fit()}}
-\item \href{#method-predict}{\code{OTC$predict()}}
-\item \href{#method-clone}{\code{OTC$clone()}}
+\item \href{#method-OTC-new}{\code{OTC$new()}}
+\item \href{#method-OTC-fit}{\code{OTC$fit()}}
+\item \href{#method-OTC-predict}{\code{OTC$predict()}}
+\item \href{#method-OTC-clone}{\code{OTC$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-OTC-new"></a>}}
+\if{latex}{\out{\hypertarget{method-OTC-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new OTC object.
 \subsection{Usage}{
@@ -96,8 +96,8 @@ A new `OTC` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-OTC-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-OTC-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the bias correction method
 \subsection{Usage}{
@@ -118,8 +118,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-OTC-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-OTC-predict}{}}}
 \subsection{Method \code{predict()}}{
 Predict the correction
 
@@ -146,8 +146,8 @@ are equivalent for OTC.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-OTC-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-OTC-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

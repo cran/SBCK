@@ -20,15 +20,15 @@ Z0 = ss$predict(X0)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{SchaakeShuffle$new()}}
-\item \href{#method-fit}{\code{SchaakeShuffle$fit()}}
-\item \href{#method-predict}{\code{SchaakeShuffle$predict()}}
-\item \href{#method-clone}{\code{SchaakeShuffle$clone()}}
+\item \href{#method-SchaakeShuffle-new}{\code{SchaakeShuffle$new()}}
+\item \href{#method-SchaakeShuffle-fit}{\code{SchaakeShuffle$fit()}}
+\item \href{#method-SchaakeShuffle-predict}{\code{SchaakeShuffle$predict()}}
+\item \href{#method-SchaakeShuffle-clone}{\code{SchaakeShuffle$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-SchaakeShuffle-new"></a>}}
+\if{latex}{\out{\hypertarget{method-SchaakeShuffle-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new ShaakeShuffle object.
 \subsection{Usage}{
@@ -47,8 +47,8 @@ A new `ShaaleShuffle` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-SchaakeShuffle-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-SchaakeShuffle-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the model
 \subsection{Usage}{
@@ -67,8 +67,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-SchaakeShuffle-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-SchaakeShuffle-predict}{}}}
 \subsection{Method \code{predict()}}{
 Fit the model
 \subsection{Usage}{
@@ -87,8 +87,8 @@ Z0 [vector] data shuffled
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-SchaakeShuffle-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-SchaakeShuffle-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

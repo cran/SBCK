@@ -39,15 +39,15 @@ Cannon, A. J., Sobie, S. R., and Murdock, T. Q.: Bias correction
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{QDM$new()}}
-\item \href{#method-fit}{\code{QDM$fit()}}
-\item \href{#method-predict}{\code{QDM$predict()}}
-\item \href{#method-clone}{\code{QDM$clone()}}
+\item \href{#method-QDM-new}{\code{QDM$new()}}
+\item \href{#method-QDM-fit}{\code{QDM$fit()}}
+\item \href{#method-QDM-predict}{\code{QDM$predict()}}
+\item \href{#method-QDM-clone}{\code{QDM$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-QDM-new"></a>}}
+\if{latex}{\out{\hypertarget{method-QDM-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new QDM object.
 \subsection{Usage}{
@@ -70,8 +70,8 @@ A new `QDM` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-QDM-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-QDM-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the bias correction method
 \subsection{Usage}{
@@ -94,8 +94,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-QDM-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-QDM-predict}{}}}
 \subsection{Method \code{predict()}}{
 Predict the correction
 \subsection{Usage}{
@@ -118,8 +118,8 @@ Predict the correction
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-QDM-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-QDM-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

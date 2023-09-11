@@ -45,21 +45,15 @@ Robin, Y., Vrac, M., Naveau, P., Yiou, P.: Multivariate
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{dOTC$new()}}
-\item \href{#method-fit}{\code{dOTC$fit()}}
-\item \href{#method-predict}{\code{dOTC$predict()}}
-\item \href{#method-clone}{\code{dOTC$clone()}}
+\item \href{#method-dOTC-new}{\code{dOTC$new()}}
+\item \href{#method-dOTC-fit}{\code{dOTC$fit()}}
+\item \href{#method-dOTC-predict}{\code{dOTC$predict()}}
+\item \href{#method-dOTC-clone}{\code{dOTC$clone()}}
 }
-}
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-}
-\out{</details>}
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-dOTC-new"></a>}}
+\if{latex}{\out{\hypertarget{method-dOTC-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new dOTC object.
 \subsection{Usage}{
@@ -95,8 +89,8 @@ A new `dOTC` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-dOTC-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-dOTC-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the bias correction method
 \subsection{Usage}{
@@ -119,8 +113,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-dOTC-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-dOTC-predict}{}}}
 \subsection{Method \code{predict()}}{
 Predict the correction
 
@@ -151,8 +145,8 @@ are equivalent for OTC.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-dOTC-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-dOTC-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

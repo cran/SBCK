@@ -44,21 +44,15 @@ Vrac, M.: Multivariate bias adjustment of high-dimensional
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{QMrs$new()}}
-\item \href{#method-fit}{\code{QMrs$fit()}}
-\item \href{#method-predict}{\code{QMrs$predict()}}
-\item \href{#method-clone}{\code{QMrs$clone()}}
+\item \href{#method-QMrs-new}{\code{QMrs$new()}}
+\item \href{#method-QMrs-fit}{\code{QMrs$fit()}}
+\item \href{#method-QMrs-predict}{\code{QMrs$predict()}}
+\item \href{#method-QMrs-clone}{\code{QMrs$clone()}}
 }
-}
-\if{html}{
-\out{<details open ><summary>Inherited methods</summary>}
-\itemize{
-}
-\out{</details>}
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-QMrs-new"></a>}}
+\if{latex}{\out{\hypertarget{method-QMrs-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new QMrs object.
 \subsection{Usage}{
@@ -80,8 +74,8 @@ A new `QMrs` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-fit"></a>}}
-\if{latex}{\out{\hypertarget{method-fit}{}}}
+\if{html}{\out{<a id="method-QMrs-fit"></a>}}
+\if{latex}{\out{\hypertarget{method-QMrs-fit}{}}}
 \subsection{Method \code{fit()}}{
 Fit the bias correction method
 \subsection{Usage}{
@@ -102,8 +96,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict"></a>}}
-\if{latex}{\out{\hypertarget{method-predict}{}}}
+\if{html}{\out{<a id="method-QMrs-predict"></a>}}
+\if{latex}{\out{\hypertarget{method-QMrs-predict}{}}}
 \subsection{Method \code{predict()}}{
 Predict the correction
 \subsection{Usage}{
@@ -122,8 +116,8 @@ Predict the correction
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-QMrs-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-QMrs-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -41,15 +41,15 @@ print(stop_slope$nit)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{SlopeStoppingCriteria$new()}}
-\item \href{#method-reset}{\code{SlopeStoppingCriteria$reset()}}
-\item \href{#method-append}{\code{SlopeStoppingCriteria$append()}}
-\item \href{#method-clone}{\code{SlopeStoppingCriteria$clone()}}
+\item \href{#method-SlopeStoppingCriteria-new}{\code{SlopeStoppingCriteria$new()}}
+\item \href{#method-SlopeStoppingCriteria-reset}{\code{SlopeStoppingCriteria$reset()}}
+\item \href{#method-SlopeStoppingCriteria-append}{\code{SlopeStoppingCriteria$append()}}
+\item \href{#method-SlopeStoppingCriteria-clone}{\code{SlopeStoppingCriteria$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-SlopeStoppingCriteria-new"></a>}}
+\if{latex}{\out{\hypertarget{method-SlopeStoppingCriteria-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new SlopeStoppingCriteria object.
 \subsection{Usage}{
@@ -72,8 +72,8 @@ A new `SlopeStoppingCriteria` object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-reset"></a>}}
-\if{latex}{\out{\hypertarget{method-reset}{}}}
+\if{html}{\out{<a id="method-SlopeStoppingCriteria-reset"></a>}}
+\if{latex}{\out{\hypertarget{method-SlopeStoppingCriteria-reset}{}}}
 \subsection{Method \code{reset()}}{
 Reset the class
 \subsection{Usage}{
@@ -85,8 +85,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-append"></a>}}
-\if{latex}{\out{\hypertarget{method-append}{}}}
+\if{html}{\out{<a id="method-SlopeStoppingCriteria-append"></a>}}
+\if{latex}{\out{\hypertarget{method-SlopeStoppingCriteria-append}{}}}
 \subsection{Method \code{append()}}{
 Add a new value
 \subsection{Usage}{
@@ -105,8 +105,8 @@ NULL
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-SlopeStoppingCriteria-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-SlopeStoppingCriteria-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
